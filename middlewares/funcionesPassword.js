@@ -13,8 +13,10 @@ export function validarPassword(password, salt, hash) {
 
 };
 
-export function usuarioAutorizado() {
-
+export function usuarioAutorizado(req,res,next) { //se usa para cuando se logee un usuario normal o adeministrador
+   console.log(req.cookies);
+   next();
+   
 };
 
 export function adminAutorizado() {

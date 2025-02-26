@@ -40,55 +40,6 @@ export const login = async ({ username, password }) => {
     }
 };
 
-// Mostrar todos los usuarios
-export const mostrarUsuarios = async () => {
-    try {
-        const usuarios = await User.find();
-        return mensaje(200, usuarios);
-    } catch (error) {
-        return mensaje(400, "No existen usuarios", error);
-    }
-};
-
-// Buscar usuario por id
-export const buscarUsuarioPorId = async (id) => {
-    try {
-        const usuario = await User.findById(id);
-        if (!usuario) {
-            return mensaje(404, "Usuario no encontrado");
-        }
-        return mensaje(200, usuario);
-    } catch (error) {
-        return mensaje(400, "Error al buscar usuario", error);
-    }
-};
-
-// Borrar usuario por id
-export const borrarUsuarioPorId = async (id) => {
-    try {
-        const usuario = await User.findByIdAndDelete(id);
-        if (!usuario) {
-            return mensaje(404, "Usuario no encontrado");
-        }
-        return mensaje(200, "Usuario borrado correctamente");
-    } catch (error) {
-        return mensaje(400, "Error al borrar usuario", error);
-    }
-};
-
-// Actualizar un usuario
-export const actualizarUsuario = async (id, datosActualizados) => {
-    try {
-        const usuario = await User.findByIdAndUpdate(id, datosActualizados, { new: true });
-        if (!usuario) {
-            return mensaje(404, "Usuario no encontrado");
-        }
-        return mensaje(200, "Usuario actualizado correctamente", usuario);
-    } catch (error) {
-        return mensaje(400, "Error al actualizar usuario", error);
-    }
-};
-
 export const isAdmin = async (id)=> {
     try {
         const usuario = await User.findById(id);
